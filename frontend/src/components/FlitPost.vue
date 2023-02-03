@@ -3,8 +3,8 @@
     <div class="username">{{ post.user.username }}</div>
     <div class="message">{{ post.message }}</div>
     <div class="meta">
-        <div class="kudos">{{ post.kudos.length }}✨</div>
-    <div class="publishDate">{{ post.publishDate }}</div>
+      <div class="kudos">{{ post.kudos.length }}✨</div>
+      <div class="publishDate">{{ post.publishDate }}</div>
     </div>
   </div>
 </template>
@@ -27,19 +27,29 @@ export default defineComponent({
 .flit {
   width: 100%;
   margin-bottom: 20px;
-  border: 1px solid red;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: rgb(181, 31, 181);
 }
 
 .username {
-    font-weight: bold;
+  color: purple;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
 }
 
 .meta {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
 }
 
-.message{
-    margin: 5px 0;
+.message {
+  margin: 5px 0;
+}
+
+.publishDate {
+    color: purple;
+    font-style: italic;
 }
 </style>

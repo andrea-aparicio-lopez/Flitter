@@ -1,5 +1,5 @@
 <template>
-  <h1>Flit Feed</h1>
+  <h1>Latest Flits</h1>
   <div v-for="post in posts" :key="post.id">
     <FlitPost :post="post" />
   </div>
@@ -23,7 +23,7 @@ export default defineComponent({
           username: "Agapita21",
         },
         message:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
+          "Trying out this new social network called #Flitter! So far it's easy to use and has a great community. Loving the sleek interface and fun features. Can't wait to see what other cool things it has in store. #SocialMedia #NewNetwork #Excited 🚀💻💜",
         image: null,
         publishDate: "3/feb/23",
         kudos: [5, 6, 4, 3],
@@ -34,7 +34,7 @@ export default defineComponent({
           id: 2,
           username: "Florencio14",
         },
-        message: "Hello World!",
+        message: "Had a great time exploring the city with friends today! #Adventure #FunTimes #Flitter",
         image: null,
         publishDate: "4/feb/23",
         kudos: [1, 4, 8, 9, 10, 7],
@@ -45,10 +45,21 @@ export default defineComponent({
           id: 3,
           username: "Luciana33",
         },
-        message: "Hello World!!!",
+        message: "Coffee, code, and music are the perfect start to my day. #MondayMotivation #CodingLife #Flitter",
         image: null,
         publishDate: "5/feb/23",
         kudos: [2],
+      },
+          {
+        id: 3,
+        user: {
+          id: 3,
+          username: "Hermenegildo5",
+        },
+        message: "Had an amazing time hiking in the mountains today. The views were breathtaking! Can't wait to share more adventures and memories on #Flitter. #OutdoorLife #NatureLovers #HikingGoals 🏔️🌲🚶‍♀️",
+        image: null,
+        publishDate: "5/feb/23",
+        kudos: [2, 7, 9],
       },
     ];
 
@@ -60,4 +71,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+h1 {
+  color: purple;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
+}
 </style>
