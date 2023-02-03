@@ -1,5 +1,5 @@
 <template>
-    <h1>Searchbar here</h1>
+    <input type="text" placeholder="@people | #tags | text">
 </template>
 
 <script lang="ts">
