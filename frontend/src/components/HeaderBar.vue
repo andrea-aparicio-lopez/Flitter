@@ -1,9 +1,14 @@
 <template>
-  <nav>
-    <img alt="Vue logo" src="../assets/logo.png" width="50" />
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Log in</router-link>
-    <router-link to="/singup">Sign up</router-link>
+  <nav class="bar">
+    <div class="logo">
+      <router-link to="/"
+        ><img alt="Vue logo" src="../assets/logo.png" width="50" />
+      </router-link>
+    </div>
+    <div class="links">
+      <router-link to="/login">Log in</router-link> |
+      <router-link to="/singup">Sign up</router-link>
+    </div>
   </nav>
 </template>
 
@@ -14,4 +19,10 @@ export default defineComponent({});
 </script>
 
 <style scoped>
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
 </style>
