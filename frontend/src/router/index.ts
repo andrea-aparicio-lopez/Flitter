@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'profile',
     // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
-    component: () => import('../views/MyProfileView.vue')
+    component: () => import('../views/ProfileView.vue')
   },
 ]
 
