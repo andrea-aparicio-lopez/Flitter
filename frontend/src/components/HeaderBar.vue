@@ -8,17 +8,29 @@
       <div class="title">
         <h1>Flitter</h1>
       </div>
-    <div class="links">
-      <router-link to="/login">Log in</router-link> |
-      <router-link to="/singup">Sign up</router-link>
-    </div>
+      <!-- <div v-if="loggedIn"> -->
+        <!-- <LoggedIn/> -->
+      <!-- </div> -->
+      
+      <!-- <div v-else> -->
+        <LoggedOut/>
+      <!-- </div> -->
+
   </nav>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import LoggedOut from "./LoggedOut.vue";
+import LoggedIn from "./LoggedIn.vue"
 
-export default defineComponent({});
+export default defineComponent({
+    name: "HeaderBar",
+    components: { 
+      LoggedOut,
+      // LoggedIn
+     }
+});
 </script>
 
 <style scoped>
@@ -44,11 +56,4 @@ h1 {
   font-family: "Righteous", cursive;
 }
 
-.links {
-  justify-self: right;
-}
-
-a {
-  text-decoration: none;
-}
 </style>
