@@ -16,6 +16,10 @@ export default defineComponent({
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 #app {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +35,5 @@ body {
   padding: 10px;
   max-width: 600px;
   margin: auto;
-  
 }
 </style>
