@@ -1,7 +1,7 @@
 import { ActionTree } from "vuex";
 import { IUserState } from "./state";
 
-const actions: ActionTree<IUserState, {}> = {
+const actions: ActionTree<IUserState, unknown> = {
     async fetchUser({commit}) {
         commit('setIsLoading', true)
 

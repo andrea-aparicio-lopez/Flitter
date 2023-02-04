@@ -5,7 +5,7 @@ import mutations from "./mutations";
 import state, { IPostsState } from "./state";
 
 
-const postsModule: Module<IPostsState, {}> = {
+const postsModule: Module<IPostsState, unknown> = {
     namespaced: true,
     state,
     getters,

@@ -1,7 +1,7 @@
 import { GetterTree } from "vuex";
 import { IUserState } from "./state";
 
-const getters: GetterTree<IUserState, {}> =  {
+const getters: GetterTree<IUserState, unknown> =  {
     getUser(state) {
         return state.user;
     },

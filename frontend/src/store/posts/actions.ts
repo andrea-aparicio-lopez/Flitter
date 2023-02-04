@@ -2,7 +2,7 @@ import { ActionTree } from "vuex";
 import { IPostsState } from "./state";
 
 
-const actions: ActionTree<IPostsState, {}> = {
+const actions: ActionTree<IPostsState, unknown> = {
     async fetchPosts({commit}) {
         commit('SetIsLoading', true)
         

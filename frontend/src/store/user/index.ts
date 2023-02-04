@@ -4,7 +4,7 @@ import getters from "./getters";
 import mutations from "./mutations";
 import state, { IUserState } from "./state";
 
-const userModule: Module<IUserState, {}> = {
+const userModule: Module<IUserState, unknown> = {
     namespaced: true,
     state,
     getters,
