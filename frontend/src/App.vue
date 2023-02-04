@@ -1,6 +1,6 @@
 <template>
   <HeaderBar />
-  <router-view />
+  <div class="wrapper"><router-view /></div>
 </template>
 
 <script lang="ts">
@@ -17,14 +17,20 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
 body {
   margin: 0;
+}
+
+.wrapper {
+  padding: 10px;
+  max-width: 600px;
+  margin: auto;
+  
 }
 </style>
