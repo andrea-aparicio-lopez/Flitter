@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import haveAuthGuard from './auth-guard'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,19 +11,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
   },
   {
     path: '/signup',
     name: 'signup',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "signup" */ '../views/SignupView.vue')
-  }
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
+    component: () => import('../views/MyProfileView.vue')
+  },
 ]
 
 const router = createRouter({
