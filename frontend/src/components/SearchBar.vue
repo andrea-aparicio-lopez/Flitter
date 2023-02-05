@@ -13,5 +13,6 @@ export default defineComponent({});
 <style scoped>
 .searchBar {
   width: auto;
+  margin-bottom: 40px;
 }
 </style>

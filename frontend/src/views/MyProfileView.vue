@@ -12,5 +12,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+h1 {
+  color: purple;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
+}
 </style>

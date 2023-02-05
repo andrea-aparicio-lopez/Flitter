@@ -2,7 +2,7 @@
   <nav class="bar">
     <div class="logo">
       <router-link to="/">
-        <img alt="Flitter logo" src="../assets/logo.png" width="60" />
+        <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="60" />
       </router-link>
     </div>
     <div class="title">

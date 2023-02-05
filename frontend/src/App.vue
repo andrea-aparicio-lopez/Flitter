@@ -94,7 +94,7 @@ label {
   margin-bottom: 10px;
 }
 
-img {
+.roundimg {
   border-radius: 50%;
 }
 </style>
