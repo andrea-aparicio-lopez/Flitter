@@ -36,4 +36,65 @@ body {
   max-width: 600px;
   margin: auto;
 }
+
+button {
+  background-color: purple;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 40px;
+  transition: 0.25ms;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: rgb(181, 31, 181);
+}
+
+input {
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(181, 31, 181);
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.25s;
+  width: 100%;
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: inset 0 -2px 5px rgb(226, 192, 226);
+}
+
+
+a {
+  text-decoration: none;
+  transition: 0.25ms;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+a:hover {
+  color: rgb(181, 31, 181);
+}
+
+label {
+  font-size: 24px;
+  color: purple;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
+  display: block;
+  margin-bottom: 10px;
+}
+
+img {
+  border-radius: 50%;
+}
 </style>

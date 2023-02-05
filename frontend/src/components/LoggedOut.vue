@@ -19,6 +19,7 @@ export default defineComponent({
 }
 
 a {
+  font-size: 18px;
   text-decoration: none;
   color: purple;
   font-family: "Righteous", cursive;
