@@ -43,6 +43,12 @@ const routes: Array<RouteRecordRaw> = [
         /* webpackChunkName: "signup" */ "../views/PasswordRecoveryView.vue"
       ),
   },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () =>
+      import(/* webpackChunkName: "settings" */ "../views/SettingsView.vue"),
+  },
 ];
 
 const router = createRouter({

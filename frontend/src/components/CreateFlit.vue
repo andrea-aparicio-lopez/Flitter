@@ -43,9 +43,9 @@ input:focus {
 button {
 margin-bottom: 0;
 font-size: 20px;
-padding: 0 10px;
+padding: 5px 10px;
 margin: 5px 10px;
-border-radius: 5px 10px;
+border-radius: 5px;
 justify-content: flex-end;
 }
 

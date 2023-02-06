@@ -51,6 +51,7 @@ button {
   margin-bottom: 40px;
   transition: 0.25ms;
   border-radius: 40px;
+  white-space: nowrap;
 }
 
 button:hover {
