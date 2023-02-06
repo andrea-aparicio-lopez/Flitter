@@ -24,6 +24,11 @@ const routes: Array<RouteRecordRaw> = [
     // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
     component: () => import('../views/ProfileView.vue')
   },
+  {
+  path: '/password',
+  name: 'password',
+  component: () => import(/* webpackChunkName: "signup" */ '../views/PasswordRecoveryView.vue')
+},
 ]
 
 const router = createRouter({

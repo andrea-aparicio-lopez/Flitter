@@ -2,7 +2,7 @@
   <nav class="bar">
     <div class="logo">
       <router-link to="/">
-        <img alt="Flitter logo" src="../assets/logo.png" width="50" />
+        <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="60" />
       </router-link>
     </div>
     <div class="title">
@@ -41,6 +41,7 @@ export default defineComponent({
   justify-content: space-between;
   gap: 10px;
   padding: 10px;
+  margin: 10px 0;
 }
 
 .logo {
@@ -50,7 +51,7 @@ export default defineComponent({
 .title {
   flex-grow: 1;
   justify-self: center;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 0px;
 }
 

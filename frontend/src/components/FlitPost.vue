@@ -1,10 +1,15 @@
 <template>
-  <div class="flit">
-    <div class="username">{{ post.user.username }}</div>
-    <div class="message">{{ post.message }}</div>
-    <div class="meta">
-      <div class="kudos">{{ post.kudos.length }}✨</div>
-      <div class="publishDate">{{ post.publishDate }}</div>
+  <div class="profile">
+    <div class="logo">
+      <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="40" />
+    </div>
+    <div class="flit">
+      <div class="username">{{ post.user.username }}</div>
+      <div class="message">{{ post.message }}</div>
+      <div class="meta">
+        <div class="kudos">{{ post.kudos.length }}✨</div>
+        <div class="publishDate">{{ post.publishDate }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +35,8 @@ export default defineComponent({
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-color: rgb(181, 31, 181);
+  margin: 0 10px 10px 10px;
+  font-size: 18px;
 }
 
 .username {
@@ -40,8 +47,12 @@ export default defineComponent({
 
 .meta {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 3px;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.kudos {
+  margin: 0 10px;
 }
 
 .message {
@@ -49,7 +60,13 @@ export default defineComponent({
 }
 
 .publishDate {
-    color: purple;
-    font-style: italic;
+  color: purple;
+  font-style: italic;
+}
+
+.profile {
+  display: flex;
+  align-items: start;
+  margin-bottom: 10px;
 }
 </style>
