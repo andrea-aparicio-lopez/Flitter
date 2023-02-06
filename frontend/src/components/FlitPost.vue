@@ -1,10 +1,17 @@
 <template>
   <div class="profile">
     <div class="logo">
-      <img class="roundimg" alt="Flitter logo" src="../assets/logo.png" width="40" />
+      <img
+        class="roundimg"
+        alt="Flitter logo"
+        src="../assets/logo.png"
+        width="40"
+      />
     </div>
     <div class="flit">
-      <div class="username">{{ post.user.username }}</div>
+      <router-link :to="`/profile/${post.user.username}`">
+        <div class="username">{{ post.user.username }}</div></router-link
+      >
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <div class="kudos">{{ post.kudos.length }}✨</div>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-
+    <!-- CreateFlit goes here when logged in -->
     <SearchBar/>
     <FlitFeed :posts="posts"/>
   </div>
