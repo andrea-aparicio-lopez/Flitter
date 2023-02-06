@@ -15,8 +15,7 @@
             </div>
         </div>
         <div class="buttons">
-            <button class="edit-button">Edit profile</button>
-            <button class="newFlit-button">New Flit</button>
+            <button><a href="#/login">Log in to follow</a></button>
         </div>
     </div>
 </template>
@@ -93,5 +92,9 @@ img {
     /* border: 2px solid purple; */
     border: none;
     border-radius: 5px;
+}
+
+a {
+    color: white;
 }
 </style>

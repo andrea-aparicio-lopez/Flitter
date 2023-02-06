@@ -43,14 +43,14 @@ button {
   font-weight: lighter;
   border: none;
   color: white;
-  padding: 8px 20px;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   margin-bottom: 40px;
   transition: 0.25ms;
-  border-radius: 20px;
+  border-radius: 40px;
 }
 
 button:hover {
@@ -70,7 +70,6 @@ input {
 
 input:focus {
   outline: none;
-  box-shadow: inset 0 -2px 5px rgb(226, 192, 226);
 }
 
 
