@@ -42,7 +42,7 @@ export default defineComponent({
     const fakePosts: Post[] = [
       {
         id: 5,
-        user: {
+        author: {
           id: 1,
           username: props.username,
         },
@@ -54,7 +54,7 @@ export default defineComponent({
       },
       {
         id: 6,
-        user: {
+        author: {
           id: 1,
           username: props.username,
         },

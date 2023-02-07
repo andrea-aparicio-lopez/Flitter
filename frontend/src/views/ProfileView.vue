@@ -9,7 +9,6 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
 import { Post } from "@/models/post";
-import user from "@/store/user";
 
 export default defineComponent({
   name: "ProfileView",
@@ -40,7 +39,7 @@ export default defineComponent({
     const fakePosts: Post[] = [
       {
         id: 5,
-        user: {
+        author: {
           id: 1,
           username: props.username,
         },
@@ -52,7 +51,7 @@ export default defineComponent({
       },
       {
         id: 6,
-        user: {
+        author: {
           id: 1,
           username: props.username,
         },
