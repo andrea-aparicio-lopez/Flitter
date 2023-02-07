@@ -1,6 +1,6 @@
 export interface Post {
   id: number;
-  user: {
+  author: {
     id: number; // Id del User que postea
     username: string; // username del User que postea
   };

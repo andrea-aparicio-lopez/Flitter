@@ -9,8 +9,8 @@
       />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.user.username}`">
-        <div class="username">{{ post.user.username }}</div></router-link
+      <router-link :to="`/profile/${post.author.username}`">
+        <div class="username">{{ post.author.username }}</div></router-link
       >
       <div class="message">{{ post.message }}</div>
       <div class="meta">
