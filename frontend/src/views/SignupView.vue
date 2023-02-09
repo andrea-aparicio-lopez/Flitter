@@ -3,17 +3,17 @@
     <div class="tagline"><h2>New to Flitter?</h2></div>
     <div class="inputUsername">
       <label for="username">Username</label>
-      <input id="username" type="text" placeholder="JohnnyJuanito" />
+      <input id="username" type="text" placeholder="JohnnyJuanito" pattern="[A-Za-z]{}" required/>
     </div>
     <div class="inputEmail">
       <label for="email">Email</label>
-      <input id="email" type="text" placeholder="john@mail.com" />
+      <input id="email" type="email" placeholder="john@mail.com" required/>
     </div>
     <div class="inputPassword">
       <label for="password">Password</label>
-      <input id="password" type="password" placeholder="******************" />
+      <input id="password" type="password" placeholder="******************" required/>
     </div>
-    <button>Sign up</button>
+    <button type="submit">Sign up</button>
     <div class="validate">
       <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Check your inbox and click on the link to validate your account.</a>
     </div>

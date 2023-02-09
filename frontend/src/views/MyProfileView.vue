@@ -19,17 +19,16 @@ export default defineComponent({
     CreateFlit,
     FlitFeed,
   },
-  props: {
-    username: {
-      type: String,
-      required: true,
-    },
-  },
+  // props: {
+  //   username: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
   setup(props) {
-    const isLoggedIn = true;
     const user: User = {
       id: 1,
-      username: props.username,
+      username: 'lolita28',
       email: "loolitaa@gmail.com",
       password: "holaSoyLola",
       avatar:
@@ -44,7 +43,7 @@ export default defineComponent({
         id: 5,
         user: {
           id: 1,
-          username: props.username,
+          username: 'lolita28',
         },
         message:
           "Trying out this new social network called #Flitter! So far it's easy to use and has a great community. Loving the sleek interface and fun features. Can't wait to see what other cool things it has in store. #SocialMedia #NewNetwork #Excited 🚀💻💜",
@@ -56,7 +55,7 @@ export default defineComponent({
         id: 6,
         user: {
           id: 1,
-          username: props.username,
+          username: 'lolita28',
         },
         message:
           "Had a great time exploring the city with friends today! #Adventure #FunTimes #Flitter",
@@ -69,7 +68,6 @@ export default defineComponent({
     return {
       user,
       posts: fakePosts,
-      isLoggedIn,
     };
   },
 });
