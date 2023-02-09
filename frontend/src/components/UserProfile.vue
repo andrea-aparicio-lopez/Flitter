@@ -15,7 +15,9 @@
             </div>
         </div>
         <div class="buttons">
-            <button><a href="#/login">Log in to follow</a></button>
+            <button>
+                <a href="#/login">Log in to follow</a>
+            </button>
         </div>
     </div>
 </template>
@@ -92,6 +94,10 @@ img {
     /* border: 2px solid purple; */
     border: none;
     border-radius: 5px;
+}
+
+.buttons > button:hover {
+    cursor: pointer;
 }
 
 a {

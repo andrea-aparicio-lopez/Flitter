@@ -12,7 +12,12 @@
       <div class="following">
         <div class="number">{{ user.following.length }}</div>
         Following
+        </div>
       </div>
+    <div class="buttons">
+      <button class="edit-button">
+        <router-link to="/profile/me/settings">Edit profile</router-link>
+      </button>
     </div>
   </div>
 </template>
@@ -39,6 +44,7 @@ export default defineComponent({
     "a b"
     "c d";
   grid-template-columns: minmax(100px, max-content) 1fr;
+  /* grid-template-rows: minmax(100px, max-content) 50px; */
   column-gap: 20px;
 }
 
@@ -78,19 +84,15 @@ img {
 
 .buttons {
   grid-area: d;
-  display: flex;
+  /* display: flex;
   justify-content: left;
   column-gap: 5px;
+  height: 100px;
+  padding-bottom: 0; */
 }
-.edit-button,
-.newFlit-button {
-  /* display: none; */
-  width: 100px;
-  color: white;
-  background-color: purple;
-  /* border: 2px solid purple; */
-  border: none;
+.edit-button {
   border-radius: 5px;
+  margin-bottom: 0;
 }
 
 a {

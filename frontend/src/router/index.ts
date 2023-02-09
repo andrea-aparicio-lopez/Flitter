@@ -21,8 +21,14 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "signup" */ "../views/SignupView.vue"),
   },
   {
+    path: "/users",
+    name: "searchUser",
+    component: () =>
+      import("../views/SearchUserView.vue"),
+  },
+  {
     path: "/profile/:username",
-    name: "user",
+    name: "userProfile",
     // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
     component: () => import("../views/ProfileView.vue"),
     props: (route) => {
@@ -30,24 +36,29 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/profile",
-    name: "myprofile",
-    // beforeEnter: [haveAuthGuard],      Implementamos authGuard cuando tengamos el login
+    path: "/profile/me",
+    name: "myProfile",
+    beforeEnter: [haveAuthGuard],    //  Implementamos authGuard cuando tengamos el login
     component: () => import("../views/MyProfileView.vue"),
   },
   {
     path: "/password",
     name: "password",
     component: () =>
-      import(
-        /* webpackChunkName: "signup" */ "../views/PasswordRecoveryView.vue"
-      ),
+      import( "../views/PasswordRecoveryView.vue"),
   },
   {
-    path: "/settings",
-    name: "settings",
+    path: "/profile/me/settings",
+    name: "profileSettings",
+    beforeEnter: [haveAuthGuard],
     component: () =>
-      import(/* webpackChunkName: "settings" */ "../views/SettingsView.vue"),
+      import("../views/SettingsView.vue"),
+  },
+  
+  // Si no se encuentra el path:
+  {
+    path: '/:pathMatch(.*)',
+    component: () => import('../views/NotFoundView.vue'),
   },
 ];
 
