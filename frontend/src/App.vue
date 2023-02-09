@@ -58,6 +58,7 @@ button {
 
 button:hover {
   background-color: rgb(181, 31, 181);
+  cursor: pointer;
 }
 
 input {

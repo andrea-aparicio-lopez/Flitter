@@ -10,27 +10,40 @@
         <h1>Flitter</h1>
       </router-link>
     </div>
-    <!-- <div v-if="loggedIn"> -->
-    <!-- <LoggedIn/> -->
-    <!-- </div> -->
+    <div v-if="loggedIn">
+    <LoggedIn/>
+    </div>
 
-    <!-- <div v-else> -->
+    <div v-else>
     <LoggedOut />
-    <!-- </div> -->
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import LoggedOut from "./LoggedOut.vue";
 import LoggedIn from "./LoggedIn.vue";
+import router from "@/router";
+import { RouterLink } from "vue-router";
 
 export default defineComponent({
   name: "HeaderBar",
   components: {
     LoggedOut,
-    // LoggedIn
+    LoggedIn
   },
+  setup() {
+        let loggedIn = ref<boolean>(false) 
+        const token = localStorage.getItem('accessToken')
+        if(token) {
+            loggedIn = ref<boolean>(true)
+        }
+
+        return {
+            loggedIn,
+        }
+    },
 });
 </script>
 

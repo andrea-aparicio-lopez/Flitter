@@ -4,7 +4,7 @@ import { Post } from "@/models/post";
 const fakePosts: Post[] = [
     {
       id: 1,
-      user: {
+      author: {
         id: 1,
         username: "Agapita21",
       },
@@ -16,7 +16,7 @@ const fakePosts: Post[] = [
     },
     {
       id: 2,
-      user: {
+      author: {
         id: 2,
         username: "Florencio14",
       },
@@ -27,7 +27,7 @@ const fakePosts: Post[] = [
     },
     {
       id: 3,
-      user: {
+      author: {
         id: 3,
         username: "Luciana33",
       },
@@ -38,7 +38,7 @@ const fakePosts: Post[] = [
     },
         {
       id: 3,
-      user: {
+      author: {
         id: 4,
         username: "Hermenegildo5",
       },

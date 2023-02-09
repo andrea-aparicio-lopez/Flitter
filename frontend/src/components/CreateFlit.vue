@@ -25,7 +25,6 @@ export default defineComponent({});
   border-width: 2px;
   border-color: rgb(181, 31, 181);
   border-radius: 5px;
-  box-shadow: inset 0 -2px 5px rgb(226, 192, 226);  
 }
 
 input {
@@ -38,6 +37,10 @@ input {
 
 input:focus {
   outline: none;
+}
+
+.createFlit:has( input:focus ) {
+  box-shadow: inset 0 -2px 5px rgb(226, 192, 226);  
 }
 
 button {

@@ -36,6 +36,7 @@ input {
 
 input:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .searchBar:has( input:focus ) {

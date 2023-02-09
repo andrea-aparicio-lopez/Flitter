@@ -8,7 +8,7 @@ const haveAuthGuard = (to: RouteLocation, from: RouteLocation, next: any) => {
     if(accessToken) {
         next()
     }else {
-        next({name: 'home'})
+        next({name: 'login'})
     }
 }
 

@@ -151,6 +151,10 @@ h1 {
   border-radius: 5px;
 }
 
+.buttons > button:hover {
+    cursor: pointer;
+}
+
 a {
   color: #f2f2f2;
   background-color: purple;
