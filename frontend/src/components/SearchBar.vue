@@ -24,7 +24,7 @@ export default defineComponent({});
   border-style: solid;
   border-width: 2px;
   border-color: rgb(181, 31, 181);
-  border-radius: 5px;
+  border-radius: 40px;
 }
 input {
   padding: 5px;

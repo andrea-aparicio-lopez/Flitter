@@ -18,11 +18,10 @@ export default defineComponent({
 <style>
 * {
   box-sizing: border-box;
- background-color: #F2F2F2;
 }
 
 #app {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -30,6 +29,7 @@ export default defineComponent({
 
 body {
   margin: 0;
+  background-color: #f2f2f2;
 }
 
 .wrapper {
@@ -43,7 +43,7 @@ button {
   font-family: "Righteous", cursive;
   font-weight: lighter;
   border: none;
-  color: #F2F2F2;
+  color: #f2f2f2;
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
@@ -58,24 +58,23 @@ button {
 
 button:hover {
   background-color: rgb(181, 31, 181);
-  cursor: pointer;
 }
 
 input {
   border-style: solid;
   border-width: 2px;
   border-color: rgb(181, 31, 181);
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 40px;
+  padding: 5px 10px;
   transition: 0.25s;
   width: 100%;
   font-size: 20px;
+  background-color: #f2f2f2;
 }
 
 input:focus {
   outline: none;
 }
-
 
 a {
   text-decoration: none;

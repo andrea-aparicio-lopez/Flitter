@@ -148,12 +148,11 @@ h1 {
 .edit-button,
 .newFlit-button {
   /* display: none; */
-  width: 100px;
   color: #f2f2f2;
   background-color: purple;
   /* border: 2px solid purple; */
   border: none;
-  border-radius: 5px;
+  border-radius: 40px;
   margin-bottom: 0;
 }
 

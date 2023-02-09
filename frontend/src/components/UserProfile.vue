@@ -148,7 +148,7 @@ h1 {
   background-color: purple;
   /* border: 2px solid purple; */
   border: none;
-  border-radius: 5px;
+  border-radius: 40px;
 }
 
 .buttons > button:hover {

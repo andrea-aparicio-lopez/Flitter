@@ -1,6 +1,6 @@
 const apiBase =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
+    ? "http://localhost:3001"
     : process.env.API_URL;
 
 export async function get<TData>(endpoint: string): Promise<TData> {
