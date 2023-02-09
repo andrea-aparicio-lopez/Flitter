@@ -53,6 +53,7 @@ export default defineComponent({
   justify-self: center;
   font-size: 26px;
   line-height: 0px;
+  letter-spacing: 1px;
 }
 
 h1 {

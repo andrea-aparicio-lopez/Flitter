@@ -18,6 +18,7 @@ export default defineComponent({
 <style>
 * {
   box-sizing: border-box;
+ background-color: #F2F2F2;
 }
 
 #app {
@@ -42,7 +43,7 @@ button {
   font-family: "Righteous", cursive;
   font-weight: lighter;
   border: none;
-  color: white;
+  color: #F2F2F2;
   padding: 10px 30px;
   text-align: center;
   text-decoration: none;
@@ -52,6 +53,7 @@ button {
   transition: 0.25ms;
   border-radius: 40px;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
 
 button:hover {
