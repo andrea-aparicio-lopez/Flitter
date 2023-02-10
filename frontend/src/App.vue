@@ -32,12 +32,6 @@ body {
   background-color: #f2f2f2;
 }
 
-.wrapper {
-  padding: 10px;
-  max-width: 600px;
-  margin: auto;
-}
-
 button {
   background-color: purple;
   font-family: "Righteous", cursive;
@@ -49,7 +43,6 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  margin-bottom: 40px;
   transition: 0.25ms;
   border-radius: 40px;
   white-space: nowrap;
@@ -98,5 +91,13 @@ label {
 
 .roundimg {
   border-radius: 50%;
+}
+</style>
+
+<style scoped>
+.wrapper {
+  padding: 10px;
+  max-width: 600px;
+  margin: auto;
 }
 </style>

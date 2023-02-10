@@ -11,7 +11,6 @@
     <div class="avatar">
       <img class="profilePic" :src="user.avatar" :alt="user.username" />
     </div>
-    <div class="username">{{ user.username }}</div>
     <div class="follow">
       <div class="followers">
         <div class="number">{{ user.followers.length }}</div>
@@ -23,8 +22,24 @@
       </div>
     </div>
     <div class="buttons">
-      <button><a href="#/login">Log in to follow</a></button>
+      <div>
+        <button v-if="!following" class="follow-button" @click="followUser">
+          <i
+            class="fas fa-user-plus"
+            style="color: white; font-size: smaller"
+          ></i>
+        </button>
+        <button v-else class="unfollow-button" @click="unfollowUser">
+          <i
+            class="fas fa-user-minus"
+            style="color: red; font-size: smaller"
+          ></i>
+        </button>
+      </div>
     </div>
+    <!-- <div class="buttons">
+      <button><a href="#/login">Log in to follow</a></button>
+    </div> -->
   </div>
 </template>
 
@@ -38,6 +53,19 @@ export default defineComponent({
     user: {
       type: Object as PropType<User>,
       required: true,
+    },
+  },
+  data() {
+    return {
+      following: false,
+    };
+  },
+  methods: {
+    followUser() {
+      this.following = true;
+    },
+    unfollowUser() {
+      this.following = false;
     },
   },
 });
@@ -55,6 +83,7 @@ export default defineComponent({
   z-index: 3;
   background: transparent;
   margin-top: -50px;
+  padding: 10px;
 }
 
 .avatar {
@@ -97,6 +126,7 @@ h1 {
   align-items: center;
   justify-content: center;
   color: #f2f2f2;
+  letter-spacing: 1px;
 }
 
 .profilePic {
@@ -119,6 +149,8 @@ h1 {
   align-items: center;
   column-gap: 5px;
   background-color: transparent;
+  display: flex;
+  justify-content: right;
 }
 .followers,
 .following {
@@ -137,9 +169,15 @@ h1 {
 .buttons {
   grid-area: d;
   display: flex;
-  justify-content: left;
+  justify-content: right;
+  margin: -120px 0;
   column-gap: 5px;
 }
+
+button {
+  padding: 10px;
+}
+
 .edit-button,
 .newFlit-button {
   /* display: none; */
@@ -149,14 +187,22 @@ h1 {
   /* border: 2px solid purple; */
   border: none;
   border-radius: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .buttons > button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 a {
   color: #f2f2f2;
   background-color: purple;
+}
+
+.follow-button,
+.unfollow-button {
+  border-radius: 50%;
+  background-color: transparent;  
 }
 </style>
