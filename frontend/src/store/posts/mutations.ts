@@ -10,9 +10,6 @@ const mutations: MutationTree<IPostsState> = {
     setSelectedPost(state: IPostsState, post: Post) {
         state.selectedPost = post;
     },
-    setFilteredPosts(state: IPostsState, filteredPosts: Post[]) {
-        state.posts = filteredPosts;
-    },
     setIsLoading(state: IPostsState, value: boolean) {
         state.isLoading = value;
     },

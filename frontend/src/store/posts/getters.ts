@@ -12,10 +12,6 @@ const getters: GetterTree<IPostsState, unknown> = {
     getSelectedPost(state) {
         return state.selectedPost;
     },
-    // Para filtrar por título, #, etc
-    getFilteredPosts(state) {
-        return state.posts;
-    }
 }
 
 export default getters
