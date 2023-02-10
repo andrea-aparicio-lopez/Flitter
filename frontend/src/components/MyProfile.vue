@@ -1,7 +1,15 @@
 <template>
+  <div class="headerPictureName">
+    <h1>{{ user.username }}</h1>
+    <img
+      class="headerRocket"
+      alt="Header Rocket"
+      src="../assets/headerrocket.png"
+    />
+  </div>
   <div class="wrapper">
     <div class="avatar">
-      <img :src="user.avatar" :alt="user.username" />
+      <img class="profilePic" :src="user.avatar" :alt="user.username" />
     </div>
     <div class="username">{{ user.username }}</div>
     <div class="follow">
@@ -46,15 +54,58 @@ export default defineComponent({
   grid-template-columns: minmax(100px, max-content) 1fr;
   /* grid-template-rows: minmax(100px, max-content) 50px; */
   column-gap: 20px;
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  margin-top: -50px;
 }
 
 .avatar {
   grid-area: a;
   width: max-content;
+  background-color: transparent;
 }
 
-img {
+.headerPictureName {
+  position: relative;
+  z-index: 2;
+}
+
+.headerRocket {
+  width: calc(100% + 20px);
+  height: 30%;
+  background-size: cover;
+  background-image: "../assets/headerrocket.png";
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+h1 {
+  background-color: transparent;
+  font-family: "Righteous", cursive;
+  font-weight: lighter;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2f2f2;
+}
+
+.profilePic {
   width: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .username {
@@ -70,6 +121,7 @@ img {
   display: flex;
   align-items: center;
   column-gap: 5px;
+  background-color: transparent;
 }
 .followers,
 .following {
@@ -77,9 +129,12 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: transparent;
+  margin-top: 40px;
 }
 .number {
   font-weight: bold;
+  background-color: transparent;
 }
 
 .buttons {
@@ -90,12 +145,18 @@ img {
   height: 100px;
   padding-bottom: 0; */
 }
-.edit-button {
-  border-radius: 5px;
+.edit-button,
+.newFlit-button {
+  /* display: none; */
+  color: #f2f2f2;
+  background-color: purple;
+  /* border: 2px solid purple; */
+  border: none;
+  border-radius: 40px;
   margin-bottom: 0;
 }
 
 a {
-  color: white;
+  color: #f2f2f2;
 }
 </style>

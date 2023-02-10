@@ -41,7 +41,7 @@ export default defineComponent({
   margin-bottom: 20px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-color: rgb(181, 31, 181);
+  border-color: rgba(181, 31, 181, 0.233);
   margin: 0 10px 10px 10px;
   font-size: 18px;
 }

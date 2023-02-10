@@ -1,6 +1,6 @@
 <template>
   <MyProfile :user="user" />
-   <CreateFlit/>
+  <CreateFlit />
   <FlitFeed :posts="posts" />
 </template>
 
