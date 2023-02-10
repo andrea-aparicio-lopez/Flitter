@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+button {
+  margin-bottom: 40px;
+}
+
 h2 {
   margin-bottom: 40px;
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="links">
-      <router-link to="/profile/me">My Profile</router-link> |
+      <router-link to="/profile/me">Profile</router-link> |
       <router-link to="/home"   @click="logOut">Log out</router-link>
     </div> 
 </template>
