@@ -1,43 +1,71 @@
-import { ActionTree } from "vuex";
+import { ActionContext, ActionTree } from "vuex";
 import { IPostsState } from "./state";
+import flitterApi from "@/api/flitterApi";
+import { AxiosResponse } from "axios";
+import { Page } from "@/models/page";
 
 
 const actions: ActionTree<IPostsState, unknown> = {
-    async fetchPosts({commit}) {
+    async fetchPosts({commit}, 
+        params: { 
+            page: number, 
+            sort: string,}) {
         commit('SetIsLoading', true)
         
-        // Hacer la llamada
-        // const data = await API.get<unknown, AxiosResponse<Post[]>>('/posts')
-        commit('SetIsLoading', false)
-        // commit('setPosts', data)
+        const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts?page=${params.page}&sort=${params.sort}`);
+            
+        console.log(data.result)
+        commit('SetIsLoading', false);
+        commit('setPosts', data.result);
     },
     async fetchPostById({commit}, postId: number) {
         commit('SetIsLoading', true)
         
-        // Hacer la llamada al API
-        // const data = await API.get<unknown, AxiosResponse<Post>>(`/posts/${postId}`)
+        const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts/${postId}`)
 
         commit('SetIsLoading', false)
-        // commit('setSelectedPost', data)
+        commit('setSelectedPost', data.result)
     },
-
-    // Filtrar por texto
-    async fetchPostsFilteredByText({commit}, filter: string) {
+    async fetchPostsByUser({commit}, 
+        params: { 
+            page:       number, 
+            sort:       string, 
+            username:   string}) {
         commit('SetIsLoading', true)
 
-        // Llamada al API
-        // const data = await API.get<unknown, AxiosResponse<Post[]>>(`/posts?text=${filter.trim()}`)
-        commit('SetIsLoading', false)
-        // commit('setFilteredPosts', data)
+        const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts?page=${params.page}&sort=${params.sort}&username=${params.username}`);
+
+        commit('SetIsLoading', false);
+        commit('setPosts', data.result);
     },
-    async fetchPostsFilteredByUser({commit}, username: string) {
+    async fetchPostsByText({commit}, 
+        params: { 
+            page: number, 
+            sort: string, 
+            text: string}) {
         commit('SetIsLoading', true)
 
-        // Llamada al API
-        // const data = await API.get<unknown, AxiosResponse<Post[]>>(`/posts?username=${username.trim()}`)
+        const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts?page=${params.page}&sort=${params.sort}&text=${params.text}`);
+
+        commit('SetIsLoading', false);
+        commit('setPosts', data.result);
+    },
+    
+    // Por si se necesita buscar por usuario & texto a la vez
+    async fetchPostsAllFilters({commit}, 
+        params: { 
+            page:       number, 
+            sort:       string, 
+            username:   string, 
+            text:       string }) {
+
+        commit('SetIsLoading', true)     
+
+        const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts?page=${params.page}&sort=${params.sort}&username=${params.username}&text=${params.text}`)
+
         commit('SetIsLoading', false)
-        // commit('setFilteredPosts', data)
-    }
+        commit('setPosts', data.result)
+    },
 }
 
 export default actions;

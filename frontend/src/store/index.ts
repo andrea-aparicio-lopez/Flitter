@@ -1,6 +1,8 @@
+import { Post } from '@/models/post'
 import { createStore } from 'vuex'
 import postsModule from './posts'
 import userModule from './user'
+
 
 
 export default createStore({

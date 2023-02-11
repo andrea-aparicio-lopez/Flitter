@@ -19,7 +19,8 @@ export default defineComponent({
 
         return {
             selection,
-            sort: (selection: string) => {}
+            sort: (selection: string) => { // Meter la llamada al api con los params
+            }
         }
     }
 })
