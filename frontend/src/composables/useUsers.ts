@@ -8,6 +8,7 @@ const useUsers = () => {
         // Getters
         users: computed(() => store.getters['user/getUsers']),
         loggedUser: computed(() => store.getters['user/getLoggedUser']),
+        selectedUser: computed(() => store.getters['user/getSelectedUser']),
         isLoading: computed(() => store.getters['user/getisLoading']),
 
         // Actions

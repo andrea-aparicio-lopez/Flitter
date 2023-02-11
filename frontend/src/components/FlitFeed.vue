@@ -1,7 +1,8 @@
 <template>
   <h1>Latest Flits</h1>
   <div v-for="post in posts" :key="post.id">
-    <FlitPost :post="post" />
+    <FlitPost :post="post" 
+    @visitProfile="$emit('visitProfile', post)"/>
   </div>
   
   <!-- Si estás logeado, salen botones de página -->

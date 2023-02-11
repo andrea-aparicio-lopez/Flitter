@@ -8,6 +8,9 @@ const getters: GetterTree<IUserState, unknown> =  {
     getLoggedUser(state) {
         return state.loggedUser;
     },
+    getSelectedUser(state) {
+        return state.selectedUser;
+    },
     getIsLoading(state) {
         return state.isLoading;
     }

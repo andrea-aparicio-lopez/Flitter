@@ -9,9 +9,10 @@
       />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.author.username}`">
-        <div class="username">{{ post.author.username }}</div></router-link
-      >
+      <!-- <router-link :to="`/profile/${post.author.username}`"> -->
+        <div class="username" @click="$emit('visitProfile', post)">{{ post.author.username }}</div>
+      <!-- </router-link> -->
+
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <div class="kudos">{{ post.kudos.length }}✨</div>
@@ -50,6 +51,10 @@ export default defineComponent({
   color: purple;
   font-family: "Righteous", cursive;
   font-weight: lighter;
+}
+
+.username:hover {
+  cursor: pointer;
 }
 
 .meta {

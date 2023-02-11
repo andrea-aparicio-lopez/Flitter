@@ -14,7 +14,6 @@ const actions: ActionTree<IPostsState, unknown> = {
         
         const { data } = await flitterApi.get<unknown, AxiosResponse<Page>>(`/posts?page=${params.page}&sort=${params.sort}`);
             
-        console.log(data.result)
         commit('SetIsLoading', false);
         commit('setPosts', data.result);
     },

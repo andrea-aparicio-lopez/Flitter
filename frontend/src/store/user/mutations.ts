@@ -9,6 +9,9 @@ const mutations: MutationTree<IUserState> = {
     setLoggedUser(state: IUserState, user: User) {
         state.loggedUser = user;
     },
+    setSelectedUser(state: IUserState, user: User) {
+        state.selectedUser = user;
+    },
     setIsLoading(state: IUserState, value: boolean) {
         state.isLoading = value;
     }

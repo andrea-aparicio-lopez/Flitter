@@ -1,5 +1,5 @@
 <template>
-  <UserProfile :user="user" />
+  <UserProfile :user="selectedUser" />
   <FlitFeed :posts="posts" 
     @previousPage="previousPage()"
     @nextPage="nextPage()"/>
@@ -9,7 +9,7 @@
 import UserProfile from "@/components/UserProfile.vue";
 import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import usePosts from "@/composables/usePosts";
 import { previousPage, nextPage } from "@/composables/indexing";
 import useUsers from "@/composables/useUsers";
@@ -30,20 +30,20 @@ export default defineComponent({
   },
   setup(props) {
     // probando si funciona
-    const { users, fetchUsers } = useUsers()
-    fetchUsers('')
-    console.log(users)
+    const { selectedUser , fetchUserById } = useUsers()
+    
+    
 
-    const user: User = {
-      id: 1,
-      username: props.username,
-      email: "loolitaa@gmail.com",
-      password: "holaSoyLola",
-      avatar:
-        "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
-      followers: [3, 4],
-      following: [1, 4],
-    };
+    // const user: User = {
+    //   id: 1,
+    //   username: props.username,
+    //   email: "loolitaa@gmail.com",
+    //   password: "holaSoyLola",
+    //   avatar:
+    //     "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
+    //   followers: [3, 4],
+    //   following: [1, 4],
+    // };
 
     const { fetchPostsByUser, posts } = usePosts()
 
@@ -56,7 +56,7 @@ export default defineComponent({
     fetchPostsByUser(params)
     
     return {
-      user,
+      selectedUser,
       posts,
       
       previousPage: () => {
