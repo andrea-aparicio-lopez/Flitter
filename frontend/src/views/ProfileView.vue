@@ -11,6 +11,10 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
 import usePosts from "@/composables/usePosts";
+import { previousPage, nextPage } from "@/composables/indexing";
+import useUsers from "@/composables/useUsers";
+import posts from "@/store/posts";
+import user from "@/store/user";
 
 export default defineComponent({
   name: "ProfileView",
@@ -25,7 +29,11 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // const isLoggedIn = true;
+    // probando si funciona
+    const { users, fetchUsers } = useUsers()
+    fetchUsers('')
+    console.log(users)
+
     const user: User = {
       id: 1,
       username: props.username,
