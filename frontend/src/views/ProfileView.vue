@@ -1,6 +1,8 @@
 <template>
   <UserProfile :user="user" />
-  <FlitFeed :posts="posts" />
+  <FlitFeed :posts="posts" 
+    @previousPage="previousPage()"
+    @nextPage="nextPage()"/>
 </template>
 
 <script lang="ts">
@@ -8,7 +10,7 @@ import UserProfile from "@/components/UserProfile.vue";
 import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
-import { Post } from "@/models/post";
+import usePosts from "@/composables/usePosts";
 
 export default defineComponent({
   name: "ProfileView",
@@ -23,7 +25,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const isLoggedIn = true;
+    // const isLoggedIn = true;
     const user: User = {
       id: 1,
       username: props.username,
@@ -35,38 +37,29 @@ export default defineComponent({
       following: [1, 4],
     };
 
-    // fetchPostsFilteredByUser()
-    const fakePosts: Post[] = [
-      {
-        id: 5,
-        author: {
-          id: 1,
-          username: props.username,
-        },
-        message:
-          "Trying out this new social network called #Flitter! So far it's easy to use and has a great community. Loving the sleek interface and fun features. Can't wait to see what other cool things it has in store. #SocialMedia #NewNetwork #Excited 🚀💻💜",
-        image: null,
-        publishDate: "3/feb/23",
-        kudos: [5, 6, 4, 3],
-      },
-      {
-        id: 6,
-        author: {
-          id: 1,
-          username: props.username,
-        },
-        message:
-          "Had a great time exploring the city with friends today! #Adventure #FunTimes #Flitter",
-        image: null,
-        publishDate: "4/feb/23",
-        kudos: [1, 4, 8, 9, 10, 7],
-      },
-    ];
+    const { fetchPostsByUser, posts } = usePosts()
 
+    const params = {
+      page: 1,
+      sort: 'new',
+      username: user.username
+    }
+
+    fetchPostsByUser(params)
+    
     return {
       user,
-      posts: fakePosts,
-      isLoggedIn,
+      posts,
+      
+      previousPage: () => {
+        params.page = params.page - 1;
+        fetchPostsByUser(params)
+      },
+
+      nextPage: () => {
+        params.page ++;
+        fetchPostsByUser(params)
+      }
     };
   },
 });

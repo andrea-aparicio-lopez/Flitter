@@ -14,7 +14,6 @@ import { defineComponent } from "vue";
 import FlitFeed from "@/components/FlitFeed.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { Post } from "@/models/post";
-import { get } from "@/api";
 import usePosts from "@/composables/usePosts";
 
 
