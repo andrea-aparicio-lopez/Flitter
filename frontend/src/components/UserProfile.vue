@@ -21,18 +21,16 @@
         Following
       </div>
     </div>
-    <div class="buttons">
+    <div class="buttons" v-if="loggedIn">
       <div>
         <button v-if="!following" class="follow-button" @click="followUser">
           <i
             class="fas fa-user-plus"
-            style="color: white; font-size: smaller"
           ></i>
         </button>
         <button v-else class="unfollow-button" @click="unfollowUser">
           <i
             class="fas fa-user-minus"
-            style="color: red; font-size: smaller"
           ></i>
         </button>
       </div>
@@ -44,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { User } from "@/models/user";
 
 export default defineComponent({
@@ -54,6 +52,17 @@ export default defineComponent({
       type: Object as PropType<User>,
       required: true,
     },
+  },
+  setup() {
+    let loggedIn = ref<boolean>(false);
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      loggedIn = ref<boolean>(true);
+    }
+
+    return {
+      loggedIn,
+    };
   },
   data() {
     return {
@@ -202,7 +211,16 @@ a {
 
 .follow-button,
 .unfollow-button {
+  cursor: pointer;
   border-radius: 50%;
-  background-color: transparent;  
+  background-color: transparent;
+}
+
+.follow-button:hover {
+  color: rgb(30, 239, 30);
+}
+
+.unfollow-button {
+  color: red;
 }
 </style>
