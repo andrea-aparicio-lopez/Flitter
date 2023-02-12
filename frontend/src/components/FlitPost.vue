@@ -14,7 +14,16 @@
       >
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <div class="kudos">{{ post.kudos.length }}✨</div>
+        <div class="kudosLoggedOut" v-if="!loggedIn">
+          {{ post.kudos.length }}✨
+        </div>
+        <div
+          :class="{ kudosLoggedIn: true, given: kudosGiven }"
+          v-if="loggedIn"
+          @click="kudosGiven ? removeKudos() : giveKudos()"
+        >
+          {{ post.kudos.length }}✨
+        </div>
         <div class="publishDate">{{ post.publishDate }}</div>
       </div>
     </div>
@@ -22,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { Post } from "@/models/post";
 
 export default defineComponent({
@@ -30,6 +39,32 @@ export default defineComponent({
     post: {
       type: Object as PropType<Post>,
       required: true,
+    },
+  },
+  setup() {
+    let loggedIn = ref<boolean>(false);
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      loggedIn = ref<boolean>(true);
+    }
+
+    return {
+      loggedIn,
+    };
+  },
+  data() {
+    return {
+      kudosGiven: false,
+    };
+  },
+  methods: {
+    giveKudos() {
+      // TODO - Make API call to give kudos
+      this.kudosGiven = true;
+    },
+    removeKudos() {
+      // TODO - Make API call to remove kudos
+      this.kudosGiven = false;
     },
   },
 });
@@ -58,8 +93,9 @@ export default defineComponent({
   margin-bottom: 5px;
 }
 
-.kudos {
+.kudosLoggedOut {
   margin: 0 10px;
+  padding: 2px 6px 2px 8px;
 }
 
 .message {
@@ -75,5 +111,22 @@ export default defineComponent({
   display: flex;
   align-items: start;
   margin-bottom: 10px;
+}
+
+.kudosLoggedIn {
+  margin: 0 10px;
+  padding: 2px 6px 2px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.kudosLoggedIn:hover {
+  background-color: rgb(239, 166, 239);
+  color: purple;
+}
+
+.kudosLoggedIn.given {
+  background-color: purple;
+  color: white;
 }
 </style>
