@@ -10,11 +10,12 @@ const usePosts = () => {
         posts: computed(() => store.getters['posts/getPosts']),
         selectedPost: computed(() => store.getters['posts/getSelectedPost']),
         isLoading: computed(() => store.getters['posts/getIsLoading']),
+        limitReached: computed(() => store.getters['posts/getLimitReached']),
 
         // Actions
-        fetchPosts: (params: { page: number, sort: string}) => store.dispatch('posts/fetchPosts', params),
-        fetchPostsByUser: (params: { page: number, sort: string, username: string}) => store.dispatch('posts/fetchPostsByUser', params),
-        fetchPostsByText: (params: { page: number, sort: string, text: string}) => store.dispatch('posts/fetchPostsByText', params),
+        fetchPosts: (params: { published: boolean, page: number, sort: string}) => store.dispatch('posts/fetchPosts', params),
+        fetchPostsByUser: (params: { published: boolean, page: number, sort: string, username: string}) => store.dispatch('posts/fetchPostsByUser', params),
+        fetchPostsByText: (params: { published: boolean, page: number, sort: string, text: string}) => store.dispatch('posts/fetchPostsByText', params),
         fetchPostById: (postId: number) => store.dispatch('posts/fetchPostById', postId),
     }
 }

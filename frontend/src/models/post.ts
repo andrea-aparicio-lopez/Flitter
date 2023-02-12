@@ -6,6 +6,6 @@ export interface Post {
   };
   message: string | null;
   image: string | null; // Array de imágenes?
-  publishDate: string; // Fecha de publicación. Si no se indica, fecha actual por defecto
+  publishedDate: string; // Fecha de publicación. Si no se indica, fecha actual por defecto
   kudos: Array<number>; // Array de UserIds
 }

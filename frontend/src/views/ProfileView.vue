@@ -40,9 +40,10 @@ export default defineComponent({
       following: [1, 4],
     };
 
-    const { fetchPostsByUser, posts } = usePosts()
+    const { fetchPostsByUser, posts, limitReached } = usePosts()
 
     const params = {
+      published: true,
       page: 1,
       sort: 'new',
       username: user.username
@@ -55,13 +56,17 @@ export default defineComponent({
       posts,
       
       previousPage: () => {
-        params.page = params.page - 1;
-        fetchPostsByUser(params)
+        if(params.page > 1) {
+          params.page = params.page - 1;
+          fetchPostsByUser(params)
+        }
       },
 
       nextPage: () => {
-        params.page ++;
-        fetchPostsByUser(params)
+        if(!limitReached) {
+          params.page ++;
+          fetchPostsByUser(params)
+        }
       }
     };
   },

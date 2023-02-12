@@ -16,7 +16,7 @@
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <div class="kudos">{{ post.kudos.length }}✨</div>
-        <div class="publishDate">{{ post.publishDate }}</div>
+        <div class="publishDate">{{ post.publishedDate }}</div>
       </div>
     </div>
   </div>

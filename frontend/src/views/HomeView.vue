@@ -27,9 +27,10 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
-    const { posts, isLoading, fetchPosts, fetchPostsByText } = usePosts()
+    const { posts, limitReached, isLoading, fetchPosts, fetchPostsByText } = usePosts()
     
     const params = {
+      published: true,
       page: 1,
       sort: 'new'
     }
@@ -39,15 +40,20 @@ export default defineComponent({
     return {
       posts,
       isLoading,
+      limitReached,
 
       previousPage: () => {
-        params.page = params.page - 1;
-        fetchPosts(params)
+        if(params.page > 1) {
+          params.page = params.page - 1;
+          fetchPosts(params)
+        }
       },
 
       nextPage: () => {
-        params.page ++;
-        fetchPosts(params)
+        if(!limitReached) {
+          params.page ++;
+          fetchPosts(params)
+        }
       },
 
       visitProfile: (post: Post) => { router.push({name: 'userProfile', params: {username: post.author.username}})}
