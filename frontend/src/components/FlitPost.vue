@@ -17,7 +17,11 @@
 
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <i class="delete fas fa-trash" @click="deleteFlit"></i>
+        <i
+          class="delete fas fa-trash"
+          v-if="loggedIn && post.author.username === user.username"
+          @click="deleteFlit"
+        ></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
@@ -55,7 +59,7 @@ export default defineComponent({
 
     const date = format(
       new Date(props.post.publishedDate),
-      "H':'m' · 'd'/'MMM'/'yy"
+      "HH':'mm' · 'd'/'MMM'/'yy"
     );
 
     return {
