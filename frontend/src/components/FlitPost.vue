@@ -17,11 +17,8 @@
 
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <i
-          class="delete fas fa-trash"
-          v-if="loggedIn && post.author.username === user.username"
-          @click="deleteFlit"
-        ></i>
+        <!-- v-if="loggedIn && post.author.username === user.username" -->
+        <i class="delete fas fa-trash" v-if="loggedIn" @click="deleteFlit"></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
@@ -158,9 +155,11 @@ export default defineComponent({
   padding: 6px 0;
   border-radius: 20px;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 7px 8px 6px 8px;
   color: purple;
+  font-size: 14px;
 }
+
 .delete:hover {
   background-color: red;
   color: white;
