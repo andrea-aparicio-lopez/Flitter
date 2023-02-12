@@ -15,7 +15,17 @@
 
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <div class="kudos">{{ post.kudos.length }}✨</div>
+        <i class="delete fas fa-trash" @click="deleteFlit"></i>
+        <div class="kudosLoggedOut" v-if="!loggedIn">
+          {{ post.kudos.length }}✨
+        </div>
+        <div
+          :class="{ kudosLoggedIn: true, given: kudosGiven }"
+          v-if="loggedIn"
+          @click="kudosGiven ? removeKudos() : giveKudos()"
+        >
+          {{ post.kudos.length }}✨
+        </div>
         <div class="publishDate">{{ post.publishedDate }}</div>
       </div>
     </div>
