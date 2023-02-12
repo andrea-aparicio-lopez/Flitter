@@ -37,6 +37,7 @@ export default defineComponent({
     const { posts, fetchPostsByUser } = usePosts()
 
     const params = {
+      published: true,
       page: 1,
       sort: 'new',
       username: user.username

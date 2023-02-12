@@ -12,6 +12,9 @@ const getters: GetterTree<IPostsState, unknown> = {
     getSelectedPost(state) {
         return state.selectedPost;
     },
+    getLimitReached(state) {
+        return state.limitReached;
+    }
 }
 
 export default getters

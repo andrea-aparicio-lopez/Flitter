@@ -4,8 +4,9 @@
     <SearchBar />
     <h2 v-if="isLoading">Loading...</h2>
     <FlitFeed v-else :posts="posts" 
-    @previousPage="previousPage()"
-    @nextPage="nextPage()"/>
+    @previousPage="previousPage"
+    @nextPage="nextPage"
+    @visitProfile="visitProfile"/>
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { Post } from "@/models/post";
 import usePosts from "@/composables/usePosts";
+import { useRouter } from "vue-router";
 
 
 export default defineComponent({
@@ -24,9 +26,11 @@ export default defineComponent({
     SearchBar,
   },
   setup() {
-    const { posts, isLoading, fetchPosts, fetchPostsByText } = usePosts()
+    const router = useRouter();
+    const { posts, limitReached, isLoading, fetchPosts, fetchPostsByText } = usePosts()
     
     const params = {
+      published: true,
       page: 1,
       sort: 'new'
     }
@@ -36,16 +40,23 @@ export default defineComponent({
     return {
       posts,
       isLoading,
+      limitReached,
 
       previousPage: () => {
-        params.page = params.page - 1;
-        fetchPosts(params)
+        if(params.page > 1) {
+          params.page = params.page - 1;
+          fetchPosts(params)
+        }
       },
 
       nextPage: () => {
-        params.page ++;
-        fetchPosts(params)
-      }
+        if(!limitReached) {
+          params.page ++;
+          fetchPosts(params)
+        }
+      },
+
+      visitProfile: (post: Post) => { router.push({name: 'userProfile', params: {username: post.author.username}})}
     }
   }
 });

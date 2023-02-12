@@ -1,16 +1,20 @@
 <template>
   <UserProfile :user="user" />
   <FlitFeed :posts="posts" 
-    @previousPage="previousPage()"
-    @nextPage="nextPage()"/>
+    @previousPage="previousPage"
+    @nextPage="nextPage"/>
 </template>
 
 <script lang="ts">
 import UserProfile from "@/components/UserProfile.vue";
 import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import usePosts from "@/composables/usePosts";
+import { previousPage, nextPage } from "@/composables/indexing";
+import useUsers from "@/composables/useUsers";
+import posts from "@/store/posts";
+import user from "@/store/user";
 
 export default defineComponent({
   name: "ProfileView",
@@ -25,7 +29,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // const isLoggedIn = true;
     const user: User = {
       id: 1,
       username: props.username,
@@ -37,9 +40,10 @@ export default defineComponent({
       following: [1, 4],
     };
 
-    const { fetchPostsByUser, posts } = usePosts()
+    const { fetchPostsByUser, posts, limitReached } = usePosts()
 
     const params = {
+      published: true,
       page: 1,
       sort: 'new',
       username: user.username
@@ -52,13 +56,17 @@ export default defineComponent({
       posts,
       
       previousPage: () => {
-        params.page = params.page - 1;
-        fetchPostsByUser(params)
+        if(params.page > 1) {
+          params.page = params.page - 1;
+          fetchPostsByUser(params)
+        }
       },
 
       nextPage: () => {
-        params.page ++;
-        fetchPostsByUser(params)
+        if(!limitReached) {
+          params.page ++;
+          fetchPostsByUser(params)
+        }
       }
     };
   },

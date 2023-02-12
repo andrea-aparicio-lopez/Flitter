@@ -13,6 +13,9 @@ const mutations: MutationTree<IPostsState> = {
     setIsLoading(state: IPostsState, value: boolean) {
         state.isLoading = value;
     },
+    setLimitReached(state: IPostsState, value: boolean) {
+        state.limitReached = value;
+    }
 }
 
 export default mutations;

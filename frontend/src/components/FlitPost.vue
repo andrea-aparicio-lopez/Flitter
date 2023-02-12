@@ -9,9 +9,10 @@
       />
     </div>
     <div class="flit">
-      <router-link :to="`/profile/${post.author.username}`">
-        <div class="username">{{ post.author.username }}</div></router-link
-      >
+      <!-- <router-link :to="`/profile/${post.author.username}`"> -->
+        <div class="username" @click="$emit('visitProfile', post)">{{ post.author.username }}</div>
+      <!-- </router-link> -->
+
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <i class="delete fas fa-trash" @click="deleteFlit"></i>
@@ -25,7 +26,7 @@
         >
           {{ post.kudos.length }}✨
         </div>
-        <div class="publishDate">{{ post.publishDate }}</div>
+        <div class="publishDate">{{ post.publishedDate }}</div>
       </div>
     </div>
   </div>
@@ -90,6 +91,10 @@ export default defineComponent({
   color: purple;
   font-family: "Righteous", cursive;
   font-weight: lighter;
+}
+
+.username:hover {
+  cursor: pointer;
 }
 
 .meta {

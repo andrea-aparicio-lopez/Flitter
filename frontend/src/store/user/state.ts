@@ -1,13 +1,17 @@
 import { User } from "@/models/user";
 
 export interface IUserState {
-    user: User | null,
+    users: User[],
+    loggedUser: User | null,
+    selectedUser: User | null,
     isLoading: boolean
 }
 
 function state(): IUserState {
     return {
-        user: null,
+        users: [],
+        loggedUser: null,
+        selectedUser: null,
         isLoading: false
     }
 }

@@ -11,7 +11,7 @@ const fakePosts: Post[] = [
       message:
         "Trying out this new social network called #Flitter! So far it's easy to use and has a great community. Loving the sleek interface and fun features. Can't wait to see what other cool things it has in store. #SocialMedia #NewNetwork #Excited 🚀💻💜",
       image: null,
-      publishDate: "3/feb/23",
+      publishedDate: "3/feb/23",
       kudos: [5, 6, 4, 3],
     },
     {
@@ -22,7 +22,7 @@ const fakePosts: Post[] = [
       },
       message: "Had a great time exploring the city with friends today! #Adventure #FunTimes #Flitter",
       image: null,
-      publishDate: "4/feb/23",
+      publishedDate: "4/feb/23",
       kudos: [1, 4, 8, 9, 10, 7],
     },
     {
@@ -33,7 +33,7 @@ const fakePosts: Post[] = [
       },
       message: "Coffee, code, and music are the perfect start to my day. #MondayMotivation #CodingLife #Flitter",
       image: null,
-      publishDate: "5/feb/23",
+      publishedDate: "5/feb/23",
       kudos: [2],
     },
         {
@@ -44,7 +44,7 @@ const fakePosts: Post[] = [
       },
       message: "Had an amazing time hiking in the mountains today. The views were breathtaking! Can't wait to share more adventures and memories on #Flitter. #OutdoorLife #NatureLovers #HikingGoals 🏔️🌲🚶‍♀️",
       image: null,
-      publishDate: "5/feb/23",
+      publishedDate: "5/feb/23",
       kudos: [2, 7, 9],
     }
 ]
