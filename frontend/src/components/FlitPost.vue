@@ -14,6 +14,7 @@
       >
       <div class="message">{{ post.message }}</div>
       <div class="meta">
+        <i class="delete fas fa-trash" @click="deleteFlit"></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
@@ -66,6 +67,10 @@ export default defineComponent({
       // TODO - Make API call to remove kudos
       this.kudosGiven = false;
     },
+    deleteFlit() {
+      //TODO - Make API call to delete flit
+      console.log("Delete flit here...")
+    }
   },
 });
 </script>
@@ -127,6 +132,18 @@ export default defineComponent({
 
 .kudosLoggedIn.given {
   background-color: purple;
+  color: white;
+}
+
+.delete {
+  padding: 6px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: purple;
+}
+.delete:hover {
+  background-color: red;
   color: white;
 }
 </style>

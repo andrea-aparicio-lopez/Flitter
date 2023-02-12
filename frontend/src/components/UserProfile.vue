@@ -26,13 +26,11 @@
         <button v-if="!following" class="follow-button" @click="followUser">
           <i
             class="fas fa-user-plus"
-            style="color: white; font-size: smaller"
           ></i>
         </button>
         <button v-else class="unfollow-button" @click="unfollowUser">
           <i
             class="fas fa-user-minus"
-            style="color: red; font-size: smaller"
           ></i>
         </button>
       </div>
@@ -202,7 +200,16 @@ a {
 
 .follow-button,
 .unfollow-button {
+  cursor: pointer;
   border-radius: 50%;
   background-color: transparent;  
+}
+
+.follow-button:hover {
+  color: rgb(30, 239, 30);
+}
+
+.unfollow-button {
+  color: red;
 }
 </style>
