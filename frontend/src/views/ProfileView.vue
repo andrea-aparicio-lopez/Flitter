@@ -1,8 +1,8 @@
 <template>
-  <UserProfile :user="selectedUser" />
+  <UserProfile :user="user" />
   <FlitFeed :posts="posts" 
-    @previousPage="previousPage()"
-    @nextPage="nextPage()"/>
+    @previousPage="previousPage"
+    @nextPage="nextPage"/>
 </template>
 
 <script lang="ts">
@@ -29,21 +29,16 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // probando si funciona
-    const { selectedUser , fetchUserById } = useUsers()
-    
-    
-
-    // const user: User = {
-    //   id: 1,
-    //   username: props.username,
-    //   email: "loolitaa@gmail.com",
-    //   password: "holaSoyLola",
-    //   avatar:
-    //     "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
-    //   followers: [3, 4],
-    //   following: [1, 4],
-    // };
+    const user: User = {
+      id: 1,
+      username: props.username,
+      email: "loolitaa@gmail.com",
+      password: "holaSoyLola",
+      avatar:
+        "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
+      followers: [3, 4],
+      following: [1, 4],
+    };
 
     const { fetchPostsByUser, posts } = usePosts()
 
@@ -56,7 +51,7 @@ export default defineComponent({
     fetchPostsByUser(params)
     
     return {
-      selectedUser,
+      user,
       posts,
       
       previousPage: () => {

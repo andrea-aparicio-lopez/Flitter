@@ -4,8 +4,8 @@
     <SearchBar />
     <h2 v-if="isLoading">Loading...</h2>
     <FlitFeed v-else :posts="posts" 
-    @previousPage="previousPage()"
-    @nextPage="nextPage()"
+    @previousPage="previousPage"
+    @nextPage="nextPage"
     @visitProfile="visitProfile"/>
   </div>
 </template>
