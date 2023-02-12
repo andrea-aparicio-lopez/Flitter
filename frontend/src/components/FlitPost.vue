@@ -10,7 +10,9 @@
     </div>
     <div class="flit">
       <!-- <router-link :to="`/profile/${post.author.username}`"> -->
-        <div class="username" @click="$emit('visitProfile', post)">{{ post.author.username }}</div>
+      <div class="username" @click="$emit('visitProfile', post)">
+        {{ post.author.username }}
+      </div>
       <!-- </router-link> -->
 
       <div class="message">{{ post.message }}</div>
@@ -26,7 +28,7 @@
         >
           {{ post.kudos.length }}✨
         </div>
-        <div class="publishDate">{{ post.publishedDate }}</div>
+        <div class="publishDate">{{ date }}</div>
       </div>
     </div>
   </div>
@@ -35,6 +37,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
 import { Post } from "@/models/post";
+import { format } from "date-fns";
 
 export default defineComponent({
   props: {
@@ -43,15 +46,21 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     let loggedIn = ref<boolean>(false);
     const token = localStorage.getItem("accessToken");
     if (token) {
       loggedIn = ref<boolean>(true);
     }
 
+    const date = format(
+      new Date(props.post.publishedDate),
+      "H':'m' · 'd'/'MMM'/'yy"
+    );
+
     return {
       loggedIn,
+      date,
     };
   },
   data() {
@@ -70,8 +79,8 @@ export default defineComponent({
     },
     deleteFlit() {
       //TODO - Make API call to delete flit
-      console.log("Delete flit here...")
-    }
+      console.log("Delete flit here...");
+    },
   },
 });
 </script>
@@ -115,6 +124,7 @@ export default defineComponent({
 .publishDate {
   color: purple;
   font-style: italic;
+  padding: 3px 0 0 0;
 }
 
 .profile {
