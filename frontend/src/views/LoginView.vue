@@ -1,13 +1,13 @@
 <template>
-  <form class="login">
+  <form class="login" v-on:submit.prevent="login">
     <div class="tagline"><h2>Already have an account?</h2></div>
     <div class="inputEmail">
       <label for="username">Username/email</label>
-      <input id="username" type="text" placeholder="john@mail.com" />
+      <input id="username" type="text" placeholder="john@mail.com" v-model="email"/>
     </div>
     <div class="inputPassword">
       <label for="password">Password</label>
-      <input id="password" type="password" placeholder="******************" />
+      <input id="password" type="password" placeholder="******************" v-model="password"/>
     </div>
     <button>Log in</button>
     <div class="forgotPassword">
@@ -17,6 +17,43 @@
   </form>
 </template>
 
+<script lang="ts">
+import flitterApi from '@/api/flitterApi';
+import router from '@/router';
+import axios from 'axios';
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'LoginView',
+  data() {
+    return {
+      email: '',
+      password: '',
+      error: false,
+      error_msg: ''
+    }
+  },
+  methods: {
+    async login() {
+      const data = {
+        "email": `${this.email}`,
+        "password": `${this.password}`
+      }
+      try {
+          const response = await axios.post('http://localhost:3000/api/login', data)
+          console.log(response)
+          localStorage.setItem('accessToken', response.data.token)
+
+          router.push({ name: 'myProfile' })
+      } catch(err) {
+          console.log(err);
+          this.error = true;
+          this.error_msg = `${err}`
+      }
+    }
+  }
+})
+</script>
 <style scoped>
 .login {
   padding: 10px;
