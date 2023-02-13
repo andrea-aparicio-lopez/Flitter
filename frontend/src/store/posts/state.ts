@@ -13,7 +13,7 @@ function state(): IPostsState {
         posts: [],
         selectedPost: null,
         isLoading: false,
-        limitReached: true
+        limitReached: false
     }
 }
 
