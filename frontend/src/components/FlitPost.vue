@@ -10,12 +10,15 @@
     </div>
     <div class="flit">
       <!-- <router-link :to="`/profile/${post.author.username}`"> -->
-        <div class="username" @click="$emit('visitProfile', post)">{{ post.author.username }}</div>
+      <div class="username" @click="$emit('visitProfile', post)">
+        {{ post.author.username }}
+      </div>
       <!-- </router-link> -->
 
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <i class="delete fas fa-trash" @click="deleteFlit"></i>
+        <!-- v-if="loggedIn && post.author.username === user.username" -->
+        <i class="delete fas fa-trash" v-if="loggedIn" @click="deleteFlit"></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
@@ -26,7 +29,7 @@
         >
           {{ post.kudos.length }}✨
         </div>
-        <div class="publishDate">{{ post.publishedDate }}</div>
+        <div class="publishDate">{{ date }}</div>
       </div>
     </div>
   </div>
@@ -35,6 +38,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
 import { Post } from "@/models/post";
+import { format } from "date-fns";
 
 export default defineComponent({
   props: {
@@ -43,15 +47,21 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     let loggedIn = ref<boolean>(false);
     const token = localStorage.getItem("accessToken");
     if (token) {
       loggedIn = ref<boolean>(true);
     }
 
+    const date = format(
+      new Date(props.post.publishedDate),
+      "HH':'mm' · 'd'/'MMM'/'yy"
+    );
+
     return {
       loggedIn,
+      date,
     };
   },
   data() {
@@ -70,8 +80,8 @@ export default defineComponent({
     },
     deleteFlit() {
       //TODO - Make API call to delete flit
-      console.log("Delete flit here...")
-    }
+      console.log("Delete flit here...");
+    },
   },
 });
 </script>
@@ -115,6 +125,7 @@ export default defineComponent({
 .publishDate {
   color: purple;
   font-style: italic;
+  padding: 3px 0 0 0;
 }
 
 .profile {
@@ -144,9 +155,11 @@ export default defineComponent({
   padding: 6px 0;
   border-radius: 20px;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 7px 8px 6px 8px;
   color: purple;
+  font-size: 14px;
 }
+
 .delete:hover {
   background-color: red;
   color: white;
