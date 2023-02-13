@@ -36,15 +36,13 @@ export default defineComponent({
   methods: {
     async login() {
       const data = {
-        "username": `${this.email}`,
-        "password": `${this.password}`,
+        "email": `${this.email}`,
+        "password": `${this.password}`
       }
       try {
-          console.log(data)
-          const response = await axios.post('http://localhost:3000/api/login/password', data)
+          const response = await axios.post('http://localhost:3000/api/login', data)
           console.log(response)
-          localStorage.setItem('accessToken', response.data.access_token)    
-          console.log('Se ha guardado el token:', response.data.access_token )
+          localStorage.setItem('accessToken', response.data.token)
 
           router.push({ name: 'myProfile' })
       } catch(err) {
