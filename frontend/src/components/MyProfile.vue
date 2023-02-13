@@ -142,10 +142,10 @@ h1 {
 }
 
 .buttons {
-  grid-area: d;
+  grid-area: b;
   display: flex;
   justify-content: right;
-  margin: -120px 0;
+  margin: -10px 0;
   column-gap: 5px;
 }
 

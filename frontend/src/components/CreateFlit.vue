@@ -3,17 +3,52 @@
     <input
       type="text"
       placeholder="What's on your mind?"
+      v-model="content"
       style="width: 100%"
     />
-    <button>Flit it!</button>
+    <button @click="createFlit">Flit it!</button>
+    <div v-if="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div v-if="successMessage">
+      {{ successMessage }}
+    </div>
   </div>
-  
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import axios, { AxiosResponse } from "axios";
+import flitterApi from "@/api/flitterApi";
+import { Post } from "@/models/post";
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    const content = ref("");
+    const errorMessage = ref("");
+    const successMessage = ref("");
+
+    const createFlit = async () => {
+      try {
+        const { data } = await flitterApi.post<unknown, AxiosResponse<Post>>(`/posts`, {message: content.value});
+        console.log("created post", data);
+        // TODO - communicate this somewhere so that the post appears dynamically in feeds.
+        // An option is to just reload the page.
+        // location.reload();
+        successMessage.value = "Flit created successfully!";
+      } catch (err) {
+        errorMessage.value = "An error occurred while creating the flit. Please try again later.";
+      }
+    };
+
+    return {
+      content,
+      errorMessage,
+      successMessage,
+      createFlit
+    };
+  }
+});
 </script>
 
 <style scoped>
