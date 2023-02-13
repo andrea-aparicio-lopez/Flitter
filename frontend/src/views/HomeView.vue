@@ -40,7 +40,7 @@ export default defineComponent({
     return {
       posts,
       isLoading,
-      limitReached,
+      // limitReached,
 
       previousPage: () => {
         if(params.page > 1) {
@@ -50,7 +50,7 @@ export default defineComponent({
       },
 
       nextPage: () => {
-        if(!limitReached) {
+        if(!limitReached.value) {
           params.page ++;
           fetchPosts(params)
         }

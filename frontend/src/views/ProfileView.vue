@@ -63,7 +63,7 @@ export default defineComponent({
       },
 
       nextPage: () => {
-        if(!limitReached) {
+        if(!limitReached.value) {
           params.page ++;
           fetchPostsByUser(params)
         }

@@ -34,7 +34,7 @@ export default defineComponent({
     };
 
     // fetchPostsFilteredByUser()
-    const { posts, fetchPostsByUser } = usePosts()
+    const { posts, limitReached, fetchPostsByUser } = usePosts()
 
     const params = {
       published: true,
@@ -50,13 +50,17 @@ export default defineComponent({
       posts,
 
       previousPage: () => {
-        params.page = params.page - 1;
-        fetchPostsByUser(params)
+        if(params.page < 1) {
+          params.page = params.page - 1;
+          fetchPostsByUser(params)
+        }
       },
 
       nextPage: () => {
-        params.page ++;
-        fetchPostsByUser(params)
+        if(!limitReached.value) {
+          params.page ++;
+          fetchPostsByUser(params)
+        }
       }
     };
   },
