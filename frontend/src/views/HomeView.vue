@@ -1,12 +1,13 @@
 <template>
   <div class="home">
     <!-- CreateFlit goes here when logged in -->
-    <SearchBar />
+    <SearchBar @search="searchPosts"/>
     <h2 v-if="isLoading">Loading...</h2>
     <FlitFeed v-else :posts="posts" 
     @previousPage="previousPage"
     @nextPage="nextPage"
-    @visitProfile="visitProfile"/>
+    @visitProfile="visitProfile"
+    />
   </div>
 </template>
 
@@ -29,10 +30,11 @@ export default defineComponent({
     const router = useRouter();
     const { posts, limitReached, isLoading, fetchPosts, fetchPostsByText } = usePosts()
     
-    const params = {
+    let params = {
       published: true,
       page: 1,
-      sort: 'new'
+      sort: 'new',
+      text: ''
     }
 
     fetchPosts(params)
@@ -56,7 +58,18 @@ export default defineComponent({
         }
       },
 
-      visitProfile: (post: Post) => { router.push({name: 'userProfile', params: {username: post.author.username}})}
+      visitProfile: (post: Post) => { router.push({name: 'userProfile', params: {username: post.author.username}})},
+
+      searchPosts: (searchInput: string) => {
+        params.text = searchInput 
+        if(searchInput !== ''){
+          // fetchPosts(params)
+          fetchPostsByText(params)
+        } else {
+          fetchPosts(params)
+        }
+
+        }
     }
   }
 });
