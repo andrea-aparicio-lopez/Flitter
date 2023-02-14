@@ -1,7 +1,7 @@
 export interface Post {
   _id: number;
   author: {
-    id: number; // Id del User que postea
+    _id: number; // Id del User que postea
     username: string; // username del User que postea
   };
   message: string | null;

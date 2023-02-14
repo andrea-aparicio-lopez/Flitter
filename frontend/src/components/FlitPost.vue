@@ -18,7 +18,7 @@
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <!-- v-if="loggedIn && post.author.username === user.username" -->
-        <!-- <i class="delete fas fa-trash" v-if="loggedIn" @click="deleteFlit"></i> -->
+        <i class="delete fas fa-trash" v-if="loggedIn && post.author._id === loggedUser._id" @click="deleteFlit(post._id)"></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
@@ -40,6 +40,7 @@ import { defineComponent, PropType, ref } from "vue";
 import { Post } from "@/models/post";
 import { format } from "date-fns";
 import flitterApi from "@/api/flitterApi";
+import useUsers from "@/composables/useUsers";
 
 export default defineComponent({
   props: {
@@ -62,12 +63,13 @@ export default defineComponent({
       "HH':'mm' · 'd'/'MMM'/'yy"
     );
 
-    console.log(props.post._id)
+    const { loggedUser } = useUsers()
 
     return {
       loggedIn,
       date,
       kudosGiven,
+      loggedUser,
 
       giveKudos: (postId: number) => {
         flitterApi.put(`/posts/${postId}/kudos`)
@@ -79,6 +81,11 @@ export default defineComponent({
         flitterApi.put(`/posts/${postId}/kudos`)
         kudosGiven = false
         location.reload();
+      },
+
+      deleteFlit: (postId: number) => {
+        flitterApi.delete(`/posts/${postId}`)
+        location.reload()
       }
 
     };
