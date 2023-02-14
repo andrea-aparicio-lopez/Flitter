@@ -23,11 +23,16 @@
     </div>
     <div class="buttons" v-if="loggedIn">
       <div>
-        <button v-if="!following" class="follow-button" @click="followUser">
-          <i class="fas fa-user-plus"></i>
+        <button class="follow-button" @click="followUser(user._id)">
+          <i
+            class="fas fa-user-plus"
+          ></i>
         </button>
-        <button v-else class="unfollow-button" @click="unfollowUser">
-          <i class="fas fa-user-minus"></i>
+        <button class="unfollow-button" @click="unfollowUser(user._id)">
+          <i
+            class="fas fa-user-minus"
+          ></i>
+
         </button>
       </div>
     </div>
@@ -40,6 +45,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
 import { User } from "@/models/user";
+import flitterApi from "@/api/flitterApi";
 
 export default defineComponent({
   name: "UserProfile",
@@ -56,22 +62,24 @@ export default defineComponent({
       loggedIn = ref<boolean>(true);
     }
 
+    let following = false
+
     return {
       loggedIn,
+      following,
+
+      followUser: (userId: number) => {
+        flitterApi.put(`/users/${userId}/follow`)
+        following = true
+        location.reload()
+      },
+
+      unfollowUser: (userId: number) =>  {
+      flitterApi.put(`/users/${userId}/unfollow`)
+        following = false
+        location.reload()
+      }
     };
-  },
-  data() {
-    return {
-      following: false,
-    };
-  },
-  methods: {
-    followUser() {
-      this.following = true;
-    },
-    unfollowUser() {
-      this.following = false;
-    },
   },
 });
 </script>
@@ -217,6 +225,10 @@ a {
 }
 
 .unfollow-button {
+  color: rgb(255, 104, 104);
+}
+
+.unfollow-button:hover {
   color: red;
 }
 </style>
