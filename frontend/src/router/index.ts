@@ -1,3 +1,4 @@
+import useUsers from "@/composables/useUsers";
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import haveAuthGuard from "./auth-guard";

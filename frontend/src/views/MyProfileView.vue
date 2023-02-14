@@ -37,8 +37,6 @@ export default defineComponent({
     
     fetchPostsByUser(params)
 
-    // console.log(loggedUser.value)
-    // console.log('usuario:', loggedUser.value.username, loggedUser.value._id)
     return {
       loggedUser,
       posts,
