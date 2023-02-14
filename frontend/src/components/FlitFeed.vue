@@ -1,6 +1,6 @@
 <template>
   <h1>Latest Flits</h1>
-  <div v-for="post in posts" :key="post.id">
+  <div v-for="post in posts" :key="post._id">
     <FlitPost :post="post" 
     @visitProfile="$emit('visitProfile', post)"/>
   </div>

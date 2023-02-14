@@ -18,14 +18,14 @@
       <div class="message">{{ post.message }}</div>
       <div class="meta">
         <!-- v-if="loggedIn && post.author.username === user.username" -->
-        <i class="delete fas fa-trash" v-if="loggedIn" @click="deleteFlit"></i>
+        <!-- <i class="delete fas fa-trash" v-if="loggedIn" @click="deleteFlit"></i> -->
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨
         </div>
         <div
           :class="{ kudosLoggedIn: true, given: kudosGiven }"
           v-if="loggedIn"
-          @click="kudosGiven ? removeKudos() : giveKudos()"
+          @click="kudosGiven ? removeKudos(post._id) : giveKudos(post._id)"
         >
           {{ post.kudos.length }}✨
         </div>
@@ -39,6 +39,7 @@
 import { defineComponent, PropType, ref } from "vue";
 import { Post } from "@/models/post";
 import { format } from "date-fns";
+import flitterApi from "@/api/flitterApi";
 
 export default defineComponent({
   props: {
@@ -54,35 +55,52 @@ export default defineComponent({
       loggedIn = ref<boolean>(true);
     }
 
+    let kudosGiven = false;
+
     const date = format(
       new Date(props.post.publishedDate),
       "HH':'mm' · 'd'/'MMM'/'yy"
     );
 
+    console.log(props.post._id)
+
     return {
       loggedIn,
       date,
+      kudosGiven,
+
+      giveKudos: (postId: number) => {
+        flitterApi.put(`/posts/${postId}/kudos`)
+        kudosGiven = true;
+      },
+
+      removeKudos: (postId: number) => {
+        flitterApi.put(`/posts/${postId}/kudos`)
+        kudosGiven = false
+      }
+
     };
   },
-  data() {
-    return {
-      kudosGiven: false,
-    };
-  },
-  methods: {
-    giveKudos() {
-      // TODO - Make API call to give kudos
-      this.kudosGiven = true;
-    },
-    removeKudos() {
-      // TODO - Make API call to remove kudos
-      this.kudosGiven = false;
-    },
-    deleteFlit() {
-      //TODO - Make API call to delete flit
-      console.log("Delete flit here...");
-    },
-  },
+  // data() {
+  //   return {
+  //     kudosGiven: false,
+  //   };
+  // },
+  // methods: {
+  //   async giveKudos() {
+  //     await flitterApi.put(`/${props.post._id}/kudos`)
+
+  //     this.kudosGiven = true;
+  //   },
+  //   removeKudos() {
+  //     // TODO - Make API call to remove kudos
+  //     this.kudosGiven = false;
+  //   },
+  //   deleteFlit() {
+  //     //TODO - Make API call to delete flit
+  //     console.log("Delete flit here...");
+  //   },
+  // },
 });
 </script>
 

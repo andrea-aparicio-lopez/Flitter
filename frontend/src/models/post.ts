@@ -1,5 +1,5 @@
 export interface Post {
-  id: number;
+  _id: number;
   author: {
     id: number; // Id del User que postea
     username: string; // username del User que postea
