@@ -1,8 +1,13 @@
 <template>
-  <UserProfile :user="user" />
-  <FlitFeed :posts="posts" 
+  <div class="loading" v-if="isLoading">Cargando...</div>
+  <div v-else>
+    <UserProfile 
+    :user="selectedUser"
+    />
+    <FlitFeed :posts="posts" 
     @previousPage="previousPage"
     @nextPage="nextPage"/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,6 +20,7 @@ import { previousPage, nextPage } from "@/composables/indexing";
 import useUsers from "@/composables/useUsers";
 import posts from "@/store/posts";
 import user from "@/store/user";
+import router from "@/router";
 
 export default defineComponent({
   name: "ProfileView",
@@ -28,32 +34,29 @@ export default defineComponent({
       required: true,
     },
   },
+  // beforeRouteEnter() {
+  //   const { fetchUserByUsername} = useUsers()
+  //   fetchUserByUsername(props.username)
+  // }, 
   setup(props) {
-    const user: User = {
-      id: 1,
-      username: props.username,
-      email: "loolitaa@gmail.com",
-      password: "holaSoyLola",
-      avatar:
-        "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
-      followers: [3, 4],
-      following: [1, 4],
-    };
-
+    const { isLoading, fetchUserByUsername, selectedUser } = useUsers()
     const { fetchPostsByUser, posts, limitReached } = usePosts()
+
+    fetchUserByUsername(props.username)
 
     const params = {
       published: true,
       page: 1,
       sort: '-publishedDate',
-      username: user.username
+      username: props.username
     }
 
     fetchPostsByUser(params)
     
     return {
-      user,
+      isLoading,
       posts,
+      selectedUser,
       
       previousPage: () => {
         if(params.page > 1) {
