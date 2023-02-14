@@ -7,7 +7,9 @@ const mutations: MutationTree<IUserState> = {
         state.users = users;
     },
     setLoggedUser(state: IUserState, user: User) {
+        console.log('por aqui pasa')
         state.loggedUser = user;
+        console.log('info:', state.loggedUser)
     },
     setSelectedUser(state: IUserState, user: User) {
         state.selectedUser = user;
