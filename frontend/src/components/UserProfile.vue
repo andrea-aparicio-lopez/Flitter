@@ -24,14 +24,10 @@
     <div class="buttons" v-if="loggedIn">
       <div>
         <button v-if="!following" class="follow-button" @click="followUser">
-          <i
-            class="fas fa-user-plus"
-          ></i>
+          <i class="fas fa-user-plus"></i>
         </button>
         <button v-else class="unfollow-button" @click="unfollowUser">
-          <i
-            class="fas fa-user-minus"
-          ></i>
+          <i class="fas fa-user-minus"></i>
         </button>
       </div>
     </div>
