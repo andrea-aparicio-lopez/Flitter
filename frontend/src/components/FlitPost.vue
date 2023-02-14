@@ -72,11 +72,13 @@ export default defineComponent({
       giveKudos: (postId: number) => {
         flitterApi.put(`/posts/${postId}/kudos`)
         kudosGiven = true;
+        location.reload();
       },
 
       removeKudos: (postId: number) => {
         flitterApi.put(`/posts/${postId}/kudos`)
         kudosGiven = false
+        location.reload();
       }
 
     };
