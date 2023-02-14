@@ -17,7 +17,6 @@
 
       <div class="message">{{ post.message }}</div>
       <div class="meta">
-        <!-- v-if="loggedIn && post.author.username === user.username" -->
         <i class="delete fas fa-trash" v-if="loggedIn && post.author._id === loggedUser._id" @click="deleteFlit(post._id)"></i>
         <div class="kudosLoggedOut" v-if="!loggedIn">
           {{ post.kudos.length }}✨

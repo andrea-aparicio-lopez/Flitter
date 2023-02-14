@@ -4,13 +4,43 @@
     <div class="inputEmail">
       <label for="username">Deactivate your account</label>
       <p>
-        By clicking the button below you will delete your Fleeter account. Your
+        By clicking the button below you will delete your Flitter account. Your
         username and profile will be deleted permanently.
       </p>
     </div>
-    <button>Deactivate</button>
+    <button @click="deleteAccount(loggedUser._id)">Deactivate</button>
   </form>
 </template>
+
+<script lang="ts">
+import flitterApi from '@/api/flitterApi';
+import useUsers from '@/composables/useUsers';
+import router from '@/router';
+import { defineComponent } from 'vue';
+
+
+export default defineComponent({
+  name: 'SettingsView',
+  setup() {
+    const { loggedUser } = useUsers()
+
+    return {
+      loggedUser,
+
+      deleteAccount: (userId: number) => {
+        if(confirm('This action is irreversible. Are you sure you want to permanetly delete your account?')) {
+          flitterApi.delete(`users/${userId}`)
+          localStorage.removeItem("accessToken");
+          router.push({name: 'home'})
+          setTimeout(() => {
+            location.reload();
+            }, 100);
+        }
+      }
+    }
+  }
+})
+</script>
 
 <style scoped>
 .settings {
