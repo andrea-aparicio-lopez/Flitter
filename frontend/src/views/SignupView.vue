@@ -78,6 +78,7 @@ export default defineComponent({
         console.log(response);
         localStorage.setItem("accessToken", response.data.token);
         this.showValidationMessage = true;
+        this.showErrorMessage = false;
       } catch (err) {
         console.log(err);
         this.error = true;
