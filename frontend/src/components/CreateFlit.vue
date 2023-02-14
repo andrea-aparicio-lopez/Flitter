@@ -35,7 +35,7 @@ export default defineComponent({
         // TODO - communicate this somewhere so that the post appears dynamically in feeds.
         // An option is to just reload the page.
         // location.reload();
-        successMessage.value = "Flit created successfully!";
+        location.reload();
       } catch (err) {
         errorMessage.value = "An error occurred while creating the flit. Please try again later.";
       }

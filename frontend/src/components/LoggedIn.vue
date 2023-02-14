@@ -1,28 +1,31 @@
 <template>
-    <div class="links">
-      <router-link to="/profile/me">Profile</router-link> |
-      <router-link to="/home"   @click="logOut">Log out</router-link>
-    </div> 
+  <div class="links">
+    <router-link to="/profile/me">Profile</router-link> |
+    <router-link to="/home" @click="logOut">Log out</router-link>
+  </div>
 </template>
 
 <script lang="ts">
-import router from '@/router';
-import { defineComponent } from 'vue';
-import { RouterLink } from 'vue-router';
+import router from "@/router";
+import { defineComponent } from "vue";
+import { RouterLink } from "vue-router";
 
 export default defineComponent({
-    name: 'LoggedIn',
-    setup() {
-        const logOut = () => {
-                localStorage.removeItem('accessToken')
-                router.push({ name: 'home' })
-            }
+  name: "LoggedIn",
+  setup() {
+    const logOut = () => {
+      localStorage.removeItem("accessToken");
+      router.push({ name: "home" });
+      setTimeout(() => {
+        location.reload();
+      }, 100);
+    };
 
-        return {
-            logOut
-        }
-    }
-})
+    return {
+      logOut,
+    };
+  },
+});
 </script>
 
 <style scoped>
@@ -38,6 +41,6 @@ a {
 }
 
 a:hover {
-    color: rgb(181, 31, 181);
+  color: rgb(181, 31, 181);
 }
 </style>
