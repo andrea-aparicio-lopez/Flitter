@@ -6,6 +6,7 @@ const getters: GetterTree<IUserState, unknown> =  {
         return state.users;
     },
     getLoggedUser(state) {
+        console.log('desde getter:', state.loggedUser)
         return state.loggedUser;
     },
     getSelectedUser(state) {

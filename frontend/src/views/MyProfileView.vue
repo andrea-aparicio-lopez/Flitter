@@ -1,7 +1,7 @@
 <template>
-  <MyProfile :user="user" />
-  <CreateFlit />
-  <FlitFeed :posts="posts" 
+    <MyProfile :user="loggedUser" />
+    <CreateFlit />
+    <FlitFeed :posts="posts" 
     @previousPage="previousPage()"
     @nextPage="nextPage()"/>
 </template>
@@ -13,6 +13,7 @@ import FlitFeed from "@/components/FlitFeed.vue";
 import { User } from "@/models/user";
 import { defineComponent } from "vue";
 import usePosts from "@/composables/usePosts";
+import useUsers from "@/composables/useUsers";
 
 export default defineComponent({
   name: "MyProfileView",
@@ -22,31 +23,24 @@ export default defineComponent({
     FlitFeed,
   },
   setup() {
-    const user: User = {
-      id: 1,
-      username: 'lola',
-      email: "loolitaa@gmail.com",
-      password: "holaSoyLola",
-      avatar:
-        "https://wallpapers-clan.com/wp-content/uploads/2022/06/cute-pusheen-pfp-1.jpg",
-      followers: [3, 4],
-      following: [1, 4],
-    };
-
-    // fetchPostsFilteredByUser()
+    const { fetchLoggedUser, loggedUser, fetchUserById, selectedUser } = useUsers()
     const { posts, limitReached, fetchPostsByUser } = usePosts()
+
+    fetchLoggedUser()
 
     const params = {
       published: true,
       page: 1,
       sort: '-publishedDate',
-      username: user.username
+      username: loggedUser.value.username
     }
-
+    
     fetchPostsByUser(params)
 
+    // console.log(loggedUser.value)
+    // console.log('usuario:', loggedUser.value.username, loggedUser.value._id)
     return {
-      user,
+      loggedUser,
       posts,
 
       previousPage: () => {

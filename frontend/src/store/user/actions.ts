@@ -25,10 +25,11 @@ const actions: ActionTree<IUserState, unknown> = {
     async fetchLoggedUser({commit}) {
         commit('setIsLoading', true)
 
-        const {data} = await flitterApi.get<unknown, AxiosResponse<User>>('/auth/profile')
-
+        const {data} = await flitterApi.get<unknown, AxiosResponse<UserResponse>>('/users/auth')
+        
         commit('setIsLoading', false)
-        commit('setLoggedUser', data)
+        commit('setLoggedUser', data.result)
+        // console.log(data.result)
     }
 }
 

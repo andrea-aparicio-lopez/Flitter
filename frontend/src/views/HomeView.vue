@@ -33,7 +33,7 @@ export default defineComponent({
     let params = {
       published: true,
       page: 1,
-      sort: '-publishedDate'
+      sort: '-publishedDate',
       text: ''
     }
 
@@ -42,7 +42,6 @@ export default defineComponent({
     return {
       posts,
       isLoading,
-      // limitReached,
 
       previousPage: () => {
         if(params.page > 1) {
