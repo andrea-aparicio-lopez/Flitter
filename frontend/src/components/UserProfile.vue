@@ -32,6 +32,7 @@
           <i
             class="fas fa-user-minus"
           ></i>
+
         </button>
       </div>
     </div>
