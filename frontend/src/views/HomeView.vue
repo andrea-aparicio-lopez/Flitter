@@ -33,7 +33,7 @@ export default defineComponent({
     let params = {
       published: true,
       page: 1,
-      sort: 'new',
+      sort: '-publishedDate'
       text: ''
     }
 

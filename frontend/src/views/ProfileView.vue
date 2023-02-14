@@ -45,7 +45,7 @@ export default defineComponent({
     const params = {
       published: true,
       page: 1,
-      sort: 'new',
+      sort: '-publishedDate',
       username: user.username
     }
 
