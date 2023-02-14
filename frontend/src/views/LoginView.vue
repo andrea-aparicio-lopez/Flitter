@@ -20,10 +20,13 @@
       />
     </div>
     <button>Log in</button>
+    <div v-if="showErrorMessage" class="invalid">
+      Sorry, wrong email/username or password! 🚀 Try again.
+    </div>
     <div class="forgotPassword">
       <a href="#/password">I can't remember my password</a>
     </div>
-    <img alt="Login Rocket" src="../assets/loginrocket.png" width="50%" />
+    <img alt="Login Rocket" src="../assets/loginrocket.png" width="250" />
   </form>
 </template>
 
@@ -41,6 +44,7 @@ export default defineComponent({
       password: "",
       error: false,
       error_msg: "",
+      showErrorMessage: false,
     };
   },
   methods: {
@@ -65,6 +69,7 @@ export default defineComponent({
         console.log(err);
         this.error = true;
         this.error_msg = `${err}`;
+        this.showErrorMessage = true;
       }
     },
   },
@@ -96,5 +101,11 @@ h2 {
 
 img {
   margin: 20px;
+}
+
+.invalid {
+  font-size: 20px;
+  color: red;
+  margin-bottom: 30px;
 }
 </style>
