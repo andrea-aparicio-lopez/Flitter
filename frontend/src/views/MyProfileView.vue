@@ -1,7 +1,7 @@
 <template>
-  <MyProfile :user="loggedUser" />
-  <CreateFlit />
-  <FlitFeed :posts="posts" 
+    <MyProfile :user="loggedUser" />
+    <CreateFlit />
+    <FlitFeed :posts="posts" 
     @previousPage="previousPage()"
     @nextPage="nextPage()"/>
 </template>
@@ -22,13 +22,12 @@ export default defineComponent({
     CreateFlit,
     FlitFeed,
   },
-  async setup() {
-    const { fetchLoggedUser, loggedUser } = useUsers()
+  setup() {
+    const { fetchLoggedUser, loggedUser, fetchUserById, selectedUser } = useUsers()
     const { posts, limitReached, fetchPostsByUser } = usePosts()
 
     fetchLoggedUser()
-    // console.log(loggedUser)
-    
+
     const params = {
       published: true,
       page: 1,
@@ -38,7 +37,8 @@ export default defineComponent({
     
     fetchPostsByUser(params)
 
-
+    // console.log(loggedUser.value)
+    // console.log('usuario:', loggedUser.value.username, loggedUser.value._id)
     return {
       loggedUser,
       posts,

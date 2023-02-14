@@ -1,17 +1,27 @@
 <template>
   <HeaderBar />
-  <div class="wrapper"><router-view /></div>
+    <div class="wrapper">
+      <router-view />
+    </div>
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import HeaderBar from "@/components/HeaderBar.vue";
+import { RouterView } from "vue-router";
+import useUsers from "./composables/useUsers";
 
 export default defineComponent({
   name: "App",
   components: {
     HeaderBar,
   },
+  setup() {
+    const {fetchLoggedUser} = useUsers()
+
+    fetchLoggedUser()
+  }
 });
 </script>
 

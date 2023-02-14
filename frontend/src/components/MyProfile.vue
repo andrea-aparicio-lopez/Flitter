@@ -44,6 +44,9 @@ export default defineComponent({
       required: true,
     },
   },
+  setup(props) {
+    console.log(props.user)
+  }
 });
 </script>
 <style scoped>
