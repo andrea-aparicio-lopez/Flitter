@@ -1,3 +1,4 @@
-# Flitter - Proyecto final
+# Flitter
+### Proyecto final para el Bootcamp de Desarrollo Web
 
-Este repositoria es una copia. El original puede encontrarse en https://github.com/byte-us/flitter
+Este repositorio es una copia en mi perfil. El original puede encontrarse en https://github.com/byte-us/flitter
